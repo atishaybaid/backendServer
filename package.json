@@ -4,12 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist",
+    /*nodemon --exec executes the command each time file changes */
+    "dev": "nodemon --exec yarn restart",
+    /* rimraf is  for doing rm -rf*/
+    "restart": "rimraf dist && yarn build && yarn start",
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "express": "^4.17.1",
+    "rimraf": "^3.0.2"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-preset-env": "^1.7.0"
+  }
 }
