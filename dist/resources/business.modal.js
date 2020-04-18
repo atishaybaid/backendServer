@@ -3,14 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.User = void 0;
+exports.Business = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Schema = _mongoose.default.Schema;
-const userSchema = new _mongoose.default.Schema({
+const businessSchema = new _mongoose.default.Schema({
   email: {
     type: String,
     required: true,
@@ -23,6 +22,8 @@ const userSchema = new _mongoose.default.Schema({
   }
 });
 
-const User = _mongoose.default.model('user', userSchema);
+businessSchema.methods.checkPassword = function (password) {};
 
-exports.User = User;
+const Business = _mongoose.default.model('business', businessSchema);
+
+exports.Business = Business;

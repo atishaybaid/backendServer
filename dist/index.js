@@ -6,15 +6,20 @@ var _express = _interopRequireDefault(require("express"));
 
 var _db = require("./utils/db.js");
 
-var _auth = require("./auth");
+var _index = require("./auth/index.js");
 
 var _bodyParser = require("body-parser");
+
+var _contactController = _interopRequireDefault(require("./resources/contact/contact.controller.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
 app.use((0, _bodyParser.json)());
-app.post('/signup', _auth.signup);
+app.post('/signup', _index.signup);
+app.post('/login', _index.login);
+app.use('/api', _index.validateRequest);
+app.post('/api/v1/contact', _contactController.default);
 
 const start = async () => {
   try {
