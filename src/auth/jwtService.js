@@ -14,7 +14,9 @@ export const generateNewToken = (business) => {
 
 export const verifyToken = (token) => {
     return new Promise((resolve, reject) => {
-        jwt.sign(token, config.jwkKey, (err, payload) => {
+        jwt.verify(token, config.jwkKey, {
+            algorithm: 'HS256'
+        }, (err, payload) => {
             if (err) {
                 reject(err);
             }

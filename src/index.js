@@ -14,6 +14,7 @@ app.use(json());
 
 app.post('/signup', signup);
 app.post('/login', login);
+console.log("request arrived");
 app.use('/api', validateRequest);
 
 app.post('/api/v1/contact', contactRouter);

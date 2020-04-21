@@ -17,6 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 */
 const createContact = async (req, res) => {
+  console.log("createContact called");
+
   try {
     if (!req.body.email || !req.body.name) {
       return res.send(400).send({
@@ -24,12 +26,15 @@ const createContact = async (req, res) => {
       });
     }
 
+    console.log(req.business);
+    console.log(req);
     const contact = await _contactModal.default.create({
       name: req.name,
       email: req.email,
-      businessId: req.businessId,
-      id: req.id
+      businessId: req.business.businessId
     });
+    console.log("created contact");
+    console.log(contact);
     return res.status(200).send({
       msg: 'contact create sucessfully'
     });

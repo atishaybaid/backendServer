@@ -27,7 +27,9 @@ exports.generateNewToken = generateNewToken;
 
 const verifyToken = token => {
   return new Promise((resolve, reject) => {
-    _jsonwebtoken.default.sign(token, _dev.default.jwkKey, (err, payload) => {
+    _jsonwebtoken.default.verify(token, _dev.default.jwkKey, {
+      algorithm: 'HS256'
+    }, (err, payload) => {
       if (err) {
         reject(err);
       }

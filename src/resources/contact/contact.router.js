@@ -1,5 +1,7 @@
 const router = express.Router();
+import createContact from "./contact.controller.js"
 
-const contactController = router.post('/', createContact);
+
+const contactRouter = router.post('/', createContact);
 
 export default contactRouter;

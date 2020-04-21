@@ -2,12 +2,6 @@ import mongoose from 'mongoose';
 
 
 const contactSchema = new mongoose.Schema({
-    id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        unique: true,
-
-    },
     businessId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -25,4 +19,5 @@ const contactSchema = new mongoose.Schema({
 })
 
 
-export const Contact = mongoose.model('contact', contactSchema);
+const Contact = mongoose.model('contact', contactSchema);
+export default Contact;

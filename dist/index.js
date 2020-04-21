@@ -18,6 +18,7 @@ const app = (0, _express.default)();
 app.use((0, _bodyParser.json)());
 app.post('/signup', _index.signup);
 app.post('/login', _index.login);
+console.log("request arrived");
 app.use('/api', _index.validateRequest);
 app.post('/api/v1/contact', _contactController.default);
 

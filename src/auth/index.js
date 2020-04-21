@@ -46,20 +46,29 @@ export const login = async (req, res) => {
 
 }
 
-const validateRequest = async (req, res) => {
-    const bearer = req.header.authorization;
+export const validateRequest = async (req, res, next) => {
+    const bearer = req.headers.authorization;
 
-    if (!bearer || bearer.startsWith('Bearer ')) {
-        return res.status(401).end();
+    if (!bearer || bearer.indexOf('Bearer ') == -1) {
+
+        return res.status(401).send({ msg: "Bearer token missing" });
     }
 
-    const token = bearer.split('Bearer ')[1].trim()
+
+
+    let token = req.headers.authorization.split(' ')[1]
+
 
     let payload;
 
     try {
         payload = await verifyToken(token);
-        const business = await Business.findById(payload.id).select('-password').exec();
+        console.log("payload");
+        console.log(payload);
+        const business = await Business.findById(payload.sub).select('-password').exec();
+        console.log("business");
+        console.log(business);
+
         if (!business) {
             return res.status(401).end();
         }
@@ -68,7 +77,7 @@ const validateRequest = async (req, res) => {
         next();
     } catch (error) {
         console.log(error);
-        return res.status(401).end();
+        return res.status(401).send({ msg: "Bearer token not valid" });
     }
 }
 

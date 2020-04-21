@@ -9,11 +9,16 @@ import Contact from './contact.modal.js';
 */
 
 const createContact = async (req, res) => {
+    console.log("createContact called");
     try {
         if (!req.body.email || !req.body.name) {
             return res.send(400).send({ msg: 'mandatory fields missing' });
         }
-        const contact = await Contact.create({ name: req.name, email: req.email, businessId: req.businessId, id: req.id });
+        console.log(req.business);
+        console.log(req);
+        const contact = await Contact.create({ name: req.name, email: req.email, businessId: req.business.businessId });
+        console.log("created contact");
+        console.log(contact);
         return res.status(200).send({ msg: 'contact create sucessfully' });
     } catch (error) {
         console.log(error);
