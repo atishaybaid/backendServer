@@ -3,7 +3,7 @@ import express from "express";
 import { connectDb } from "./utils/db.js";
 import { signup, login, validateRequest } from "./auth/index.js";
 import { json } from 'body-parser'
-import contactRouter from "./resources/contact/contact.controller.js"
+import contactRouter from "./resources/contact/contact.router.js"
 
 
 
@@ -16,8 +16,8 @@ app.post('/signup', signup);
 app.post('/login', login);
 console.log("request arrived");
 app.use('/api', validateRequest);
-
-app.post('/api/v1/contact', contactRouter);
+console.log(contactRouter);
+app.use('/api/v1/contact', contactRouter);
 
 const start = async () => {
     try {

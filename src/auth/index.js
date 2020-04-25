@@ -73,7 +73,8 @@ export const validateRequest = async (req, res, next) => {
             return res.status(401).end();
         }
 
-        req.business = req;
+        req["business"] = business;
+        req["check"] = true;
         next();
     } catch (error) {
         console.log(error);

@@ -15,12 +15,18 @@ const contactSchema = new _mongoose.default.Schema({
     required: true,
     ref: 'business'
   },
+  name: {
+    type: String
+  },
   email: {
     type: String,
-    trim: true
+    trim: true,
+    unique: true
   },
   phone: {
-    type: Number
+    type: Number,
+    trim: true,
+    unique: true
   }
 });
 

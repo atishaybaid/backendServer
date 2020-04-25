@@ -10,7 +10,7 @@ var _index = require("./auth/index.js");
 
 var _bodyParser = require("body-parser");
 
-var _contactController = _interopRequireDefault(require("./resources/contact/contact.controller.js"));
+var _contactRouter = _interopRequireDefault(require("./resources/contact/contact.router.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,7 +20,8 @@ app.post('/signup', _index.signup);
 app.post('/login', _index.login);
 console.log("request arrived");
 app.use('/api', _index.validateRequest);
-app.post('/api/v1/contact', _contactController.default);
+console.log(_contactRouter.default);
+app.use('/api/v1/contact', _contactRouter.default);
 
 const start = async () => {
   try {

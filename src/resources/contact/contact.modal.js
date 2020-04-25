@@ -7,12 +7,18 @@ const contactSchema = new mongoose.Schema({
         required: true,
         ref: 'business'
     },
+    name: {
+        type: String
+    },
     email: {
         type: String,
         trim: true,
+        unique: true
     },
     phone: {
-        type: Number
+        type: Number,
+        trim: true,
+        unique: true
 
     }
 

@@ -5,11 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _contactController = _interopRequireDefault(require("./contact.controller.js"));
+var _express = _interopRequireDefault(require("express"));
+
+var _contactController = require("./contact.controller.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const router = express.Router();
-const contactRouter = router.post('/', _contactController.default);
+const router = _express.default.Router();
+
+const contactRouter = router;
+contactRouter.post('/save', _contactController.createContact);
+contactRouter.get('/get', _contactController.getContacts);
+contactRouter.post('/update/:id', _contactController.updateContact);
+contactRouter.post('/delete', _contactController.deleteContact);
 var _default = contactRouter;
 exports.default = _default;
