@@ -47,6 +47,17 @@ B) Creation of a review request form which will be sent to a customer,with some 
 
 
 
+#### Steps to run the project
+`npm install`
+`yarn den`
+
+
+
+
+
+
+
+
 
 
 
