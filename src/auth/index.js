@@ -22,6 +22,8 @@ export const signup = async (req, res) => {
 
 }
 
+
+
 export const login = async (req, res) => {
     try {
         if (!req.body.email || !req.body.password) {
@@ -44,6 +46,18 @@ export const login = async (req, res) => {
         return res.status(500).end();
     }
 
+}
+
+
+export const businessEdit = async (req,res)=>{
+    if(!req.body.email){
+        // console.log('Email:',req.body);
+        return res.send({msg:'New email not Provided'})
+    }
+    const id=req.params.id;
+    const business =   await Business.findByIdAndUpdate(id,{email:req.body.email},{new:true}).exec();
+    console.log(business);
+    return res.send({msg:'Email Updated'});
 }
 
 export const validateRequest = async (req, res, next) => {

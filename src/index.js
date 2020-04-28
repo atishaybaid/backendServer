@@ -1,7 +1,7 @@
 import config from "./config/dev.js";
 import express from "express";
 import { connectDb } from "./utils/db.js";
-import { signup, login, validateRequest } from "./auth/index.js";
+import { signup, login, validateRequest,businessEdit } from "./auth/index.js";
 import { json } from 'body-parser'
 import contactRouter from "./resources/contact/contact.router.js"
 
@@ -17,6 +17,7 @@ app.post('/login', login);
 console.log("request arrived");
 app.use('/api', validateRequest);
 console.log(contactRouter);
+app.post('/api/business/edit',businessEdit);
 app.use('/api/v1/contact', contactRouter);
 
 const start = async () => {

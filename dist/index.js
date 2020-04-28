@@ -21,6 +21,7 @@ app.post('/login', _index.login);
 console.log("request arrived");
 app.use('/api', _index.validateRequest);
 console.log(_contactRouter.default);
+app.post('/api/business/edit', _index.businessEdit);
 app.use('/api/v1/contact', _contactRouter.default);
 
 const start = async () => {
