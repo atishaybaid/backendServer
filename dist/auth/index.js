@@ -9,6 +9,8 @@ var _business = require("../resources/business.modal");
 
 var _jwtService = require("./jwtService");
 
+// import mongoose from 'mongoose';
+// mongoose.set('useFindAndModify', false);
 const signup = async (req, res) => {
   console.log("request body");
   console.log(req.body);
@@ -41,9 +43,11 @@ const login = async (req, res) => {
       });
     }
 
+    console.log(req.body.email);
     const business = await _business.Business.findOne({
       email: req.body.email
     }).select('email password').exec();
+    console.log("PASS : ", business.password);
 
     if (business.password != req.body.password) {
       return res.status(401).send({
@@ -73,7 +77,7 @@ const businessEdit = async (req, res) => {
     });
   }
 
-  const id = req.params.id;
+  const id = req.business._id;
   const business = await _business.Business.findByIdAndUpdate(id, {
     email: req.body.email
   }, {
@@ -81,7 +85,8 @@ const businessEdit = async (req, res) => {
   }).exec();
   console.log(business);
   return res.send({
-    msg: 'Email Updated'
+    msg: 'Email Updated',
+    Newemail: req.body.email
   });
 };
 
