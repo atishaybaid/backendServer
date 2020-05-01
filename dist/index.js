@@ -12,6 +12,8 @@ var _bodyParser = require("body-parser");
 
 var _contactRouter = _interopRequireDefault(require("./resources/contact/contact.router.js"));
 
+var _questionRouter = _interopRequireDefault(require("./resources/question/question.router.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
@@ -22,6 +24,7 @@ console.log("request arrived");
 app.use('/api', _index.validateRequest);
 console.log(_contactRouter.default);
 app.use('/api/v1/contact', _contactRouter.default);
+app.use('/api/v1/question', _questionRouter.default);
 
 const start = async () => {
   try {

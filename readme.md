@@ -44,6 +44,23 @@ A) Creation of a Dashboard application which have two tabs
 B) Creation of a review request form which will be sent to a customer,with some questions
 
 
+### Review Generation use case
+geenerate a unique url which will be sent to a customer,
+upon hitting this url,a form will open which will contain basic review questions
+
+
+### Review Generation  implemntation
+1)a review id will be generated,and that review will be identified with that id
+the schema will look like following
+{
+    reviewId:'',
+    customerId:'',
+    questions:[list of ids],
+    answer:[questionId1:'answer',questionId2:'answer'],
+    reviewReceviewTimeStamp:"123456",
+}
+
+
 
 
 
