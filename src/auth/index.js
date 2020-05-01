@@ -47,7 +47,7 @@ export const login = async (req, res) => {
 }
 
 
-export const businessEdit = async (req,res)=>{
+export const editBusiness = async (req,res)=>{
     if(!req.body.email){
         // console.log('Email:',req.body);
         return res.send({msg:'New email not Provided'})
