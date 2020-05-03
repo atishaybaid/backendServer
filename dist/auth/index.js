@@ -3,12 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.validateRequest = exports.login = exports.signup = void 0;
+exports.validateRequest = exports.businessEdit = exports.login = exports.signup = void 0;
 
 var _business = require("../resources/business.modal");
 
 var _jwtService = require("./jwtService");
 
+// import mongoose from 'mongoose';
+// mongoose.set('useFindAndModify', false);
 const signup = async (req, res) => {
   console.log("request body");
   console.log(req.body);
@@ -41,9 +43,11 @@ const login = async (req, res) => {
       });
     }
 
+    console.log(req.body.email);
     const business = await _business.Business.findOne({
       email: req.body.email
     }).select('email password').exec();
+    console.log("PASS : ", business.password);
 
     if (business.password != req.body.password) {
       return res.status(401).send({
@@ -64,6 +68,29 @@ const login = async (req, res) => {
 };
 
 exports.login = login;
+
+const businessEdit = async (req, res) => {
+  if (!req.body.email) {
+    // console.log('Email:',req.body);
+    return res.send({
+      msg: 'New email not Provided'
+    });
+  }
+
+  const id = req.business._id;
+  const business = await _business.Business.findByIdAndUpdate(id, {
+    email: req.body.email
+  }, {
+    new: true
+  }).exec();
+  console.log(business);
+  return res.send({
+    msg: 'Email Updated',
+    Newemail: req.body.email
+  });
+};
+
+exports.businessEdit = businessEdit;
 
 const validateRequest = async (req, res, next) => {
   const bearer = req.headers.authorization;

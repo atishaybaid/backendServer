@@ -1,7 +1,6 @@
 import { Business } from "../resources/business.modal";
 import { generateNewToken, verifyToken } from "./jwtService";
 
-
 export const signup = async (req, res) => {
     console.log("request body");
     console.log(req.body);
@@ -22,13 +21,14 @@ export const signup = async (req, res) => {
 
 }
 
+
+
 export const login = async (req, res) => {
     try {
         if (!req.body.email || !req.body.password) {
 
             return res.status(400).send({ msg: 'need email and password' });
         }
-
         const business = await Business.findOne({ email: req.body.email }).select('email password').exec();
         if (business.password != req.body.password) {
             return res.status(401).send({ msg: "email password combination is incorrect" });
@@ -44,6 +44,19 @@ export const login = async (req, res) => {
         return res.status(500).end();
     }
 
+}
+
+
+export const editBusiness = async (req,res)=>{
+    if(!req.body.email){
+        // console.log('Email:',req.body);
+        return res.send({msg:'New email not Provided'})
+    }
+    const id= req.business._id;
+
+    const business =   await Business.findByIdAndUpdate(id,{email:req.body.email},{new:true}).exec();
+    console.log(business);
+    return res.send({msg:'Email Updated',Newemail:req.body.email});
 }
 
 export const validateRequest = async (req, res, next) => {
