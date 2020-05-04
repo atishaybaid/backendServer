@@ -9,15 +9,6 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-{
-    reviewId:'',
-    customerId:'',
-    questions:[list of ids],
-    answer:[questionId1:'answer',questionId2:'answer'],
-    reviewReceviewTimeStamp:"123456",
-}
-*/
 const reviewSchema = new _mongoose.default.Schema({
   contactId: {
     type: _mongoose.default.Schema.Types.ObjectId,
@@ -27,7 +18,7 @@ const reviewSchema = new _mongoose.default.Schema({
   questions: {
     type: Array
   },
-  answer: {
+  answers: {
     type: Array
   },
   createdAt: {
@@ -39,8 +30,13 @@ const reviewSchema = new _mongoose.default.Schema({
     default: Date.now
   }
 });
+reviewSchema.pre('updateOne', function () {
+  this.set({
+    updatedAt: new Date()
+  });
+});
 
 const Review = _mongoose.default.model('review', reviewSchema);
 
-var _default = Contact;
+var _default = Review;
 exports.default = _default;

@@ -9,7 +9,7 @@ import Contact from './contact.modal.js';
 */
 
 export const createContact = async (req, res) => {
-    console.log("createContact called");
+
 
     try {
         if (!req.body.email || !req.body.name) {
@@ -28,7 +28,7 @@ export const createContact = async (req, res) => {
 }
 
 export const getContacts = async (req, res) => {
-    console.log("getContacts called");
+
 
     try {
         const data = await Contact.find({ businessId: req.business.id });

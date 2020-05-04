@@ -3,8 +3,6 @@ import { generateNewToken, verifyToken } from "./jwtService";
 
 
 export const signup = async (req, res) => {
-    console.log("request body");
-    console.log(req.body);
 
     if (!req.body.email || !req.body.password) {
 
@@ -63,11 +61,9 @@ export const validateRequest = async (req, res, next) => {
 
     try {
         payload = await verifyToken(token);
-        console.log("payload");
-        console.log(payload);
+
         const business = await Business.findById(payload.sub).select('-password').exec();
-        console.log("business");
-        console.log(business);
+
 
         if (!business) {
             return res.status(401).end();

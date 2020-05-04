@@ -19,7 +19,7 @@ const generateNewToken = business => {
     email: business.email
   }, _dev.default.jwkKey, {
     algorithm: 'HS256',
-    expiresIn: '1h'
+    expiresIn: '24h'
   });
 };
 

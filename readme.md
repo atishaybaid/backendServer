@@ -71,6 +71,12 @@ the schema will look like following
 
 
 
+### atlas credentials
+atishaybaid@gmail.com/gunday@101
+
+
+
+
 
 
 

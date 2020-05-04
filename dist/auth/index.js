@@ -10,9 +10,6 @@ var _business = require("../resources/business.modal");
 var _jwtService = require("./jwtService");
 
 const signup = async (req, res) => {
-  console.log("request body");
-  console.log(req.body);
-
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({
       msg: 'email and password are mandatory'
@@ -79,11 +76,7 @@ const validateRequest = async (req, res, next) => {
 
   try {
     payload = await (0, _jwtService.verifyToken)(token);
-    console.log("payload");
-    console.log(payload);
     const business = await _business.Business.findById(payload.sub).select('-password').exec();
-    console.log("business");
-    console.log(business);
 
     if (!business) {
       return res.status(401).end();

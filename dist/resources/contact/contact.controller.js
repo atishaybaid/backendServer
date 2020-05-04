@@ -17,8 +17,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 */
 const createContact = async (req, res) => {
-  console.log("createContact called");
-
   try {
     if (!req.body.email || !req.body.name) {
       return res.send(400).send({
@@ -47,8 +45,6 @@ const createContact = async (req, res) => {
 exports.createContact = createContact;
 
 const getContacts = async (req, res) => {
-  console.log("getContacts called");
-
   try {
     const data = await _contactModal.default.find({
       businessId: req.business.id

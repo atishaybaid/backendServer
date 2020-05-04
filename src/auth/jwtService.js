@@ -8,7 +8,7 @@ import { resolve } from 'upath';
 export const generateNewToken = (business) => {
     return jwt.sign({ sub: business.id, email: business.email }, config.jwkKey, {
         algorithm: 'HS256',
-        expiresIn: '1h'
+        expiresIn: '24h'
     })
 };
 
