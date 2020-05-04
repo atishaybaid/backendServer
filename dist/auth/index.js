@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.validateRequest = exports.login = exports.signup = void 0;
+exports.validateRequest = exports.editBusiness = exports.login = exports.signup = void 0;
 
 var _business = require("../resources/business.modal");
 
@@ -61,6 +61,29 @@ const login = async (req, res) => {
 };
 
 exports.login = login;
+
+const editBusiness = async (req, res) => {
+  if (!req.body.email) {
+    // console.log('Email:',req.body);
+    return res.send({
+      msg: 'New email not Provided'
+    });
+  }
+
+  const id = req.business._id;
+  const business = await _business.Business.findByIdAndUpdate(id, {
+    email: req.body.email
+  }, {
+    new: true
+  }).exec();
+  console.log(business);
+  return res.send({
+    msg: 'Email Updated',
+    Newemail: req.body.email
+  });
+};
+
+exports.editBusiness = editBusiness;
 
 const validateRequest = async (req, res, next) => {
   const bearer = req.headers.authorization;

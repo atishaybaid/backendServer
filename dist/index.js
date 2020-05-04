@@ -23,6 +23,7 @@ app.use((0, _bodyParser.json)());
 app.post('/signup', _index.signup);
 app.post('/login', _index.login);
 app.use('/api', _index.validateRequest);
+app.post('/api/business/edit', _index.editBusiness);
 app.use('/api/v1/contact', _contactRouter.default);
 app.use('/api/v1/question', _questionRouter.default);
 app.use('/api/v1/review', _reviewRouter.default);
