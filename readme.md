@@ -61,6 +61,17 @@ the schema will look like following
 }
 
 
+#### Review url sending story
+1)once business user clicks on send review request,create a api which will generate a review request id and sends back a url.....at this time in database,initilize a review with just id,url and questions
+
+2)when someone opens the link sent,on the call of submit send all the information and store it in db
+3)create a api to list down all the reviews shorted by time stamp for a perticular business
+4)support pagination 
+
+
+
+
+
 
 
 

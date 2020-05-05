@@ -15,11 +15,20 @@ const reviewSchema = new _mongoose.default.Schema({
     required: true,
     ref: 'contact'
   },
+  businessId: {
+    type: _mongoose.default.Schema.Types.ObjectId,
+    required: true,
+    ref: 'business'
+  },
   questions: {
     type: Array
   },
   answers: {
     type: Array
+  },
+  url: {
+    required: true,
+    type: String
   },
   createdAt: {
     type: Date,

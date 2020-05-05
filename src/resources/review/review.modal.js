@@ -5,11 +5,21 @@ const reviewSchema = new mongoose.Schema({
         required: true,
         ref: 'contact'
     },
+    businessId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'business'
+    },
     questions: {
         type: Array
     },
     answers: {
         type: Array
+    },
+    url: {
+        required: true,
+        type: String
+
     },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
