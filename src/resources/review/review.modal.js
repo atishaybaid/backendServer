@@ -17,7 +17,6 @@ const reviewSchema = new mongoose.Schema({
         type: Array
     },
     url: {
-        required: true,
         type: String
 
     },

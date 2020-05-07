@@ -7,15 +7,27 @@ export const generateReviewURl = async (req, res) => {
         if (!reqBody.contactId) {
             return res.status(400).send({ msg: 'contactId is missing' })
         }
-        await Review.create({ contactId: reqBody.contactId });
-        const url = `http://localhost:3000/review?cid=${contactId}?rid=${review._id}`;
-        const review = await Review.findByIdAndUpdate(review._id, { URL: url, businessId: req.business._id }, { new: true }).exec();
+        const review = await Review.create({ contactId: reqBody.contactId, businessId: req.business._id });
+        const url = `http://localhost:3000/review?cid=${reqBody.contactId}?rid=${review._id}`;
+        await Review.findByIdAndUpdate(review._id, { url: url }, { new: true }).exec();
         return res.status(200).send({ url: url });
     } catch (error) {
+        console.log(error);
         return res.status(500).send({ msg: 'Internal server error' });
     }
 
 
+
+}
+
+export const getReviews = async (req, res) => {
+    try {
+        const businessId = req.business._id;
+        const reviewList = await Review.find({ businessId: businessId }).sort({ updatedAt: -1 }).exec();
+        res.status(200).send({ reviewList: reviewList });
+    } catch (error) {
+        return res.status(500).send({ msg: 'Internal server error' });
+    }
 
 }
 

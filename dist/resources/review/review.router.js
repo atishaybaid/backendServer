@@ -15,5 +15,7 @@ const router = _express.default.Router();
 
 const reviewRouter = router;
 reviewRouter.post('/add', _reviewController.addReviews);
+reviewRouter.get('/reviewUrl', _reviewController.generateReviewURl);
+reviewRouter.get('/get', _reviewController.getReviews);
 var _default = reviewRouter;
 exports.default = _default;

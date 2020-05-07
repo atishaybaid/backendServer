@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addReviews = exports.generateReviewURl = void 0;
+exports.addReviews = exports.getReviews = exports.generateReviewURl = void 0;
 
 var _reviewModal = _interopRequireDefault(require("./review.modal.js"));
 
@@ -19,18 +19,39 @@ const generateReviewURl = async (req, res) => {
       });
     }
 
-    await _reviewModal.default.create({
-      contactId: reqBody.contactId
-    });
-    const url = `http://localhost:3000/review?cid=${contactId}?rid=${review._id}`;
-    const review = await _reviewModal.default.findByIdAndUpdate(review._id, {
-      URL: url,
+    const review = await _reviewModal.default.create({
+      contactId: reqBody.contactId,
       businessId: req.business._id
+    });
+    const url = `http://localhost:3000/review?cid=${reqBody.contactId}?rid=${review._id}`;
+    await _reviewModal.default.findByIdAndUpdate(review._id, {
+      url: url
     }, {
       new: true
     }).exec();
     return res.status(200).send({
       url: url
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      msg: 'Internal server error'
+    });
+  }
+};
+
+exports.generateReviewURl = generateReviewURl;
+
+const getReviews = async (req, res) => {
+  try {
+    const businessId = req.business._id;
+    const reviewList = await _reviewModal.default.find({
+      businessId: businessId
+    }).sort({
+      updatedAt: -1
+    }).exec();
+    res.status(200).send({
+      reviewList: reviewList
     });
   } catch (error) {
     return res.status(500).send({
@@ -39,7 +60,7 @@ const generateReviewURl = async (req, res) => {
   }
 };
 
-exports.generateReviewURl = generateReviewURl;
+exports.getReviews = getReviews;
 
 const addReviews = async (req, res) => {
   const reqBody = req.body;

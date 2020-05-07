@@ -27,7 +27,6 @@ const reviewSchema = new _mongoose.default.Schema({
     type: Array
   },
   url: {
-    required: true,
     type: String
   },
   createdAt: {
