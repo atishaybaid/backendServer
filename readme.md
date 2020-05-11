@@ -75,6 +75,22 @@ Questions template creation
 
 
 
+ #### support for question templating
+ user story
+ A business user should be able to select questions from different gropus(templates)
+
+ for example:
+ A)Feedback questions
+-How  was your experiance with us?
+-Rate us on a scale of 1 to 5
+
+
+ B)Promotional Questions   
+-We are launching a sale flat 50%,would you be intersted in buying....
+-Choose your favourite shirt brand,from.....
+
+
+
 
 
 #### Steps to run the project
@@ -87,6 +103,9 @@ Questions template creation
 ### atlas credentials
 atishaybaid@gmail.com/gunday@101
 
+
+#### connection url
+mongodb+srv://atishaybaid:oLOBp056LM3CN2TN@review-cluster-h4hww.mongodb.net/godown?retryWrites=true&w=majority
 
 
 ### Twilio credentials

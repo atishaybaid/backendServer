@@ -16,6 +16,8 @@ var _questionRouter = _interopRequireDefault(require("./resources/question/quest
 
 var _reviewRouter = _interopRequireDefault(require("./resources/review/review.router.js"));
 
+var _templateRouter = _interopRequireDefault(require("./resources/questionTemplate/template.router.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
@@ -26,6 +28,7 @@ app.use('/api', _index.validateRequest);
 app.post('/api/business/edit', _index.editBusiness);
 app.use('/api/v1/contact', _contactRouter.default);
 app.use('/api/v1/question', _questionRouter.default);
+app.use('/api/v1/template', _templateRouter.default);
 app.use('/api/v1/review', _reviewRouter.default);
 
 const start = async () => {
