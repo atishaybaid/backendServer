@@ -57,8 +57,10 @@ res:
     "msg": "contact update sucessfully",
     "contact": null
 }
+```
 
 -  Delete Contact
+```
 http://localhost:3000/api/v1/contact/delete
 
 req:
