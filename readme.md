@@ -89,13 +89,19 @@ Questions template creation
 -We are launching a sale flat 50%,would you be intersted in buying....
 -Choose your favourite shirt brand,from.....
 
+#### URL Sharing Brainstorm ideas
+1. Using qr code scanner
+2. Asking people openeing the url directly
+3. SMS
+4. Watsapp
+
 
 
 
 
 #### Steps to run the project
 `npm install`
-`yarn den`
+`yarn dev`
 
 
 
@@ -105,11 +111,11 @@ atishaybaid@gmail.com/gunday@101
 
 
 #### connection url
-mongodb+srv://atishaybaid:oLOBp056LM3CN2TN@review-cluster-h4hww.mongodb.net/godown?retryWrites=true&w=majority
+`mongodb+srv://atishaybaid:oLOBp056LM3CN2TN@review-cluster-h4hww.mongodb.net/godown?retryWrites=true&w=majority`
 
 
 ### Twilio credentials
-atishaybaid@gmail.com/gunday@10112345
+`atishaybaid@gmail.com/gunday@10112345`
 
 
 

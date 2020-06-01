@@ -21,6 +21,12 @@ var _templateRouter = _interopRequireDefault(require("./resources/questionTempla
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use((0, _bodyParser.json)());
 app.post('/signup', _index.signup);
 app.post('/login', _index.login);

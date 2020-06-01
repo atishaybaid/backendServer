@@ -12,19 +12,25 @@ import templateRouter from "./resources/questionTemplate/template.router.js";
 
 
 const app = express();
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use(json());
 
 
 app.post('/signup', signup);
 app.post('/login', login);
 
-
 app.use('/api', validateRequest);
 
 app.post('/api/business/edit', editBusiness);
 app.use('/api/v1/contact', contactRouter);
 app.use('/api/v1/question', questionRouter);
-app.use('/api/v1/template',templateRouter);
+app.use('/api/v1/template', templateRouter);
 app.use('/api/v1/review', reviewRouter);
 
 
