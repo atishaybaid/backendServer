@@ -21,6 +21,7 @@
     "express-healthcheck": "^0.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.5",
+    "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "twilio": "^3.45.0"
   },
