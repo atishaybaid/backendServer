@@ -116,6 +116,10 @@ atishaybaid@gmail.com/gunday@101
 
 ### Twilio credentials
 `atishaybaid@gmail.com/gunday@10112345`
+secerate code :QE_7oiXbXRNkf6TkWEQhAQ4ujaE19AZ9FoL07eoG
+
+### twilio sms
+sid:ACec78e0f16e9d7b04255d3a9575310872
 
 
 
