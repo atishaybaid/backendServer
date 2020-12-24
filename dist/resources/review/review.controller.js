@@ -23,7 +23,7 @@ const generateReviewURl = async (req, res) => {
       contactId: reqBody.contactId,
       businessId: req.business._id
     });
-    const url = `http://localhost:3000/review?cid=${reqBody.contactId}?rid=${review._id}`;
+    const url = `http://localhost:5000/form?cid=${reqBody.contactId}?rid=${review._id}`;
     await _reviewModal.default.findByIdAndUpdate(review._id, {
       url: url
     }, {

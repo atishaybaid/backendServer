@@ -94,7 +94,7 @@ const validateRequest = async (req, res, next) => {
     });
   }
 
-  let token = req.headers.authorization.split(' ')[1];
+  let token = bearer.split(' ')[1];
   let payload;
 
   try {
@@ -106,7 +106,6 @@ const validateRequest = async (req, res, next) => {
     }
 
     req["business"] = business;
-    req["check"] = true;
     next();
   } catch (error) {
     console.log(error);

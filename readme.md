@@ -2,7 +2,29 @@ ref:https://github.com/FrontendMasters/api-design-node-v3
 
 
 
-review managment system
+#### Pulse management system
+
+We are creating a system for self use and learning first,them we will add features on top of the basic version.
+
+
+### User Flow
+User logs in with emailid and password,he will land direclty to a a checking page,which will have some questions from the question bank
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 business customer
@@ -121,6 +143,20 @@ secerate code :QE_7oiXbXRNkf6TkWEQhAQ4ujaE19AZ9FoL07eoG
 ### twilio sms
 sid:ACec78e0f16e9d7b04255d3a9575310872
 
+
+### AWS
+ca
+url:http://13.58.199.222:3000/
+
+
+### Jenkins
+url:http://13.58.199.222:8080/
+userName:admin
+pass:baidbaid
+
+
+
+#### 
 
 
 

@@ -12,6 +12,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const questionSchema = new _mongoose.default.Schema({
   text: {
     type: String
+  },
+  type: {
+    type: String,
+    required: true
   }
 });
 

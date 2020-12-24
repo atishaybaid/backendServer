@@ -8,7 +8,7 @@ export const generateReviewURl = async (req, res) => {
             return res.status(400).send({ msg: 'contactId is missing' })
         }
         const review = await Review.create({ contactId: reqBody.contactId, businessId: req.business._id });
-        const url = `http://localhost:3000/review?cid=${reqBody.contactId}?rid=${review._id}`;
+        const url = `http://localhost:5000/form?cid=${reqBody.contactId}?rid=${review._id}`;
         await Review.findByIdAndUpdate(review._id, { url: url }, { new: true }).exec();
         return res.status(200).send({ url: url });
     } catch (error) {

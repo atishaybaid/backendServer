@@ -19,6 +19,65 @@ http://localhost:3000/login
 ```
 
 
+### Checkin
+- Submit Checkin
+```
+http://localhost:3000/api/v1/checkin/save
+
+req:{
+    "responseList":[{
+        "qid":"5fe3ec34451ee83419737df6",
+        "ans":4
+    },{
+      "qid":"5fe3ec34451ee83419737df7",
+      "ans":"Developing checkin api"  
+    }]
+}
+
+
+res:{
+    "msg": "Checkin submitted sucessfully"
+}
+```
+
+- Get Checkin
+```
+http://localhost:3000/api/v1/checkin/get
+
+res:{
+    "checkinList": [
+        {
+            "responseList": [
+                {
+                    "qid": "5fe3ec34451ee83419737df6",
+                    "ans": 4
+                },
+                {
+                    "qid": "5fe3ec34451ee83419737df7",
+                    "ans": "Developing checkin api"
+                }
+            ],
+            "_id": "5fe3ee7c62606b352339146d",
+            "businessId": "5fe1de5b21d0fb0563085b77",
+            "submittedAt": "2020-12-24T01:27:24.951Z",
+            "updatedAt": "2020-12-24T01:27:24.954Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+- Delete checkin
+http://localhost:3000/api/v1/checkin/delete
+
+req:{
+    "id":"5fe3ed707ebde834886423fb"
+}
+
+{
+    "msg": "Checkin deleted sucessfully"
+}
+
 ### Contact
 - Get Contacts
 ```
@@ -97,7 +156,7 @@ res:
 ### Question
 - Add Question 
 ```
-http://localhost:3000/api/v1/question/add
+http://localhost:3000/public/v1/question/add
 
 req:
 {
@@ -113,7 +172,7 @@ res:
 
 - Get Question
 ```
-http://localhost:3000/api/v1/question/get
+http://localhost:3000/public/v1/question/get
 res:
 {
     "questions": [
@@ -150,6 +209,8 @@ res:
     "url": "http://localhost:3000/review?cid=5eaf986e58c9853276a1a336?rid=5ed9433b6473e198288a46a6"
 }
 ```
+
+
 
 - Add Reviews
 ```
