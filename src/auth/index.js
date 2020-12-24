@@ -45,16 +45,16 @@ export const login = async (req, res) => {
 }
 
 
-export const editBusiness = async (req, res) => {
-    if (!req.body.email) {
+export const editBusiness = async (req,res)=>{
+    if(!req.body.email){
         // console.log('Email:',req.body);
-        return res.send({ msg: 'New email not Provided' })
+        return res.send({msg:'New email not Provided'})
     }
-    const id = req.business._id;
+    const id= req.business._id;
 
-    const business = await Business.findByIdAndUpdate(id, { email: req.body.email }, { new: true }).exec();
+    const business =   await Business.findByIdAndUpdate(id,{email:req.body.email},{new:true}).exec();
     console.log(business);
-    return res.send({ msg: 'Email Updated', Newemail: req.body.email });
+    return res.send({msg:'Email Updated',Newemail:req.body.email});
 }
 
 export const validateRequest = async (req, res, next) => {
@@ -67,7 +67,7 @@ export const validateRequest = async (req, res, next) => {
 
 
 
-    let token = bearer.split(' ')[1]
+    let token = req.headers.authorization.split(' ')[1]
 
 
     let payload;
@@ -83,6 +83,7 @@ export const validateRequest = async (req, res, next) => {
         }
 
         req["business"] = business;
+        req["check"] = true;
         next();
     } catch (error) {
         console.log(error);

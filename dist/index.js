@@ -14,12 +14,13 @@ var _contactRouter = _interopRequireDefault(require("./resources/contact/contact
 
 var _questionRouter = _interopRequireDefault(require("./resources/question/question.router.js"));
 
-var _checkinRouter = _interopRequireDefault(require("./resources/checkin/checkin.router.js"));
+var _reviewRouter = _interopRequireDefault(require("./resources/review/review.router.js"));
+
+var _templateRouter = _interopRequireDefault(require("./resources/questionTemplate/template.router.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
-app.use('/healthcheck', require('express-healthcheck')());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
 
@@ -29,15 +30,12 @@ app.use(function (req, res, next) {
 app.use((0, _bodyParser.json)());
 app.post('/signup', _index.signup);
 app.post('/login', _index.login);
-/**
- * public api,these apis are used without public
- */
-
-app.use('/public/v1/question', _questionRouter.default);
 app.use('/api', _index.validateRequest);
 app.post('/api/business/edit', _index.editBusiness);
 app.use('/api/v1/contact', _contactRouter.default);
-app.use('/api/v1/checkin', _checkinRouter.default);
+app.use('/api/v1/question', _questionRouter.default);
+app.use('/api/v1/template', _templateRouter.default);
+app.use('/api/v1/review', _reviewRouter.default);
 
 const start = async () => {
   try {
