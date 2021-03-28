@@ -49,6 +49,15 @@ geenerate a unique url which will be sent to a customer,
 upon hitting this url,a form will open which will contain basic review questions
 
 
+
+#### Buiilding with Docker
+`docker build .`
+- check the id of that created image by using `docker image ls`
+- run this image `docker run -p 3000:3000 <id-of-the-iamge>`
+
+
+
+
 ### Review Generation  implemntation
 1)a review id will be generated,and that review will be identified with that id
 the schema will look like following
